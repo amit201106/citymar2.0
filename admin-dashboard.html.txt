@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <form id="add-product-form">
+    <label for="product-name">Product Name:</label>
+    <input type="text" id="product-name" required>
+    <label for="product-price">Product Price (₹):</label>
+    <input type="number" id="product-price" required>
+    <button type="submit">Add Product</button>
+  </form>
+  <div id="product-list">
+    <h2>Available Products</h2>
+    <ul id="products"></ul>
+  </div>
+
+  <script>
+    document.getElementById('add-product-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const productName = document.getElementById('product-name').value;
+      const productPrice = document.getElementById('product-price').value;
+      const productList = document.getElementById('products');
+
+      const li = document.createElement('li');
+      li.textContent = `${productName} - ₹${productPrice}`;
+      productList.appendChild(li);
+
+      document.getElementById('add-product-form').reset();
+    });
+  </script>
+</body>
+</html>
